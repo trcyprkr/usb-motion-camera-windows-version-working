@@ -4,13 +4,13 @@ import telegram
 import time
 import asyncio
 
-TELEGRAM_BOT_TOKEN = '5877147115:AAGEG1m64P8Q_LT0p55b2jSCV_CDB8UtPV4'
-TELEGRAM_CHAT_ID = '-1001797089983'
+TELEGRAM_BOT_TOKEN = 'your.telegram.token'
+TELEGRAM_CHAT_ID = '-your.chat.id'
 bot = telegram.Bot(token=TELEGRAM_BOT_TOKEN)
 
 async def main():
-    TELEGRAM_BOT_TOKEN = '5877147115:AAGEG1m64P8Q_LT0p55b2jSCV_CDB8UtPV4'
-    TELEGRAM_CHAT_ID = '-1001797089983'
+    TELEGRAM_BOT_TOKEN = 'your.telegram.token'
+    TELEGRAM_CHAT_ID = '-your.chat.id'
     bot = telegram.Bot(token=TELEGRAM_BOT_TOKEN)
     #asyncio.run(bot.send_photo(chat_id=TELEGRAM_CHAT_ID, photo=open(fname, 'rb'), caption="Motion Detected!"))
     with open('motion.jpg', 'rb') as f:
@@ -54,11 +54,23 @@ while(1):
     # if (frameCount > 1 and cou`nt > 5000):
     if (frameCount > 10 and count > 2000):
         print('Motion Detected')
+        
+        #Make a picture variable
         fname = ("motion.jpg")
+        
+        #Write the actual picture file
         cv2.imwrite(fname, resizedFrame)
+        
+        #Give a sec to write the file
         time.sleep(1)
+        
+        #Run the main function above
         asyncio.run(main())
+        
+        #Take a break
         time.sleep(1)
+        
+        #Reset the frame count to clear the foreground
         frameCount = 0
 
 
